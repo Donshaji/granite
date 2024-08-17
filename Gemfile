@@ -43,6 +43,7 @@ gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
 gem "bootsnap", require: false
 
 gem "shakapacker", "~> 6.6.0"
+gem 'react-rails', "~> 2.7.1"
 # Use Sass to process CSS
 # gem "sassc-rails"
 
