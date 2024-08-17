@@ -13,4 +13,10 @@
 //
 // const images = require.context('./images', true)
 // const imagePath = (name) => images(name, true)
-import "../stylesheets/application.scss"
+import "../stylesheets/application.scss";
+
+const { setAuthHeaders } = require("apis/axios");
+const { initializeLogger } = require("common/logger");
+
+initializeLogger();
+setAuthHeaders();
