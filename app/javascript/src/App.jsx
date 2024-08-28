@@ -2,11 +2,22 @@ import React from "react";
 
 import { Route, Switch, BrowserRouter as Router } from "react-router-dom";
 
+import Dashboard from "./components/Dashboard";
+
 const App = () => (
   <Router>
     <Switch>
-      <Route exact path="/" render={() => <div>Home</div>} />
-      <Route exact path="/about" render={() => <div>About</div>} />
+      <Route
+        exact
+        path="/"
+        render={() => <div className="bg-slate-500">Home</div>}
+      />
+      <Route
+        exact
+        path="/about"
+        render={() => <div className="bg-green-600">About</div>}
+      />
+      <Route exact component={Dashboard} path="/dashboard" />
     </Switch>
   </Router>
 );
