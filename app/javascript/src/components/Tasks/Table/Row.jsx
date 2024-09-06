@@ -14,6 +14,7 @@ const Row = ({ data, showTask, destroyTask }) => (
           </Tooltip>
         </td>
         <td className="whitespace-no-wrap border-r border-gray-300 px-4 py-2.5 text-sm text-gray-800">
+          {/* To handel the assigned user null */}
           {rowData.assigned_user?.name || "-"}
         </td>
         <td className="cursor-pointer px-6 py-4 text-right text-sm font-medium leading-5">
