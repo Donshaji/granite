@@ -2,6 +2,7 @@
 
 class ApplicationController < ActionController::Base
   before_action :authenticate_user_using_x_auth_token
+
   protect_from_forgery
 
   rescue_from StandardError, with: :handle_api_exception
@@ -82,7 +83,7 @@ class ApplicationController < ActionController::Base
       if is_valid_token
         @current_user = user
       else
-        render_error("Could not authenticate with the provided credentials", :unauthorized)
+        render_error(t("session.could_not_auth"), :unauthorized)
       end
     end
 
