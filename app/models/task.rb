@@ -5,6 +5,7 @@ class Task < ApplicationRecord
   MAX_TITLE_LENGTH = 125
   VALID_TITLE_REGEX = /\A.*[a-zA-Z0-9].*\z/i
 
+  enum :status, { unstarred: "unstarred", starred: "starred" }, default: :unstarred
   enum :progress, { pending: "pending", completed: "completed" }, default: :pending
 
   has_many :comments, dependent: :destroy
@@ -21,6 +22,14 @@ class Task < ApplicationRecord
   before_create :set_slug
 
   private
+
+    def self.of_status(progress)
+      if progress == :pending
+        pending.in_order_of(:status, %w(starred unstarred)).order("updated_at DESC")
+      else
+        completed.in_order_of(:status, %w(starred unstarred)).order("updated_at DESC")
+      end
+    end
 
     def set_slug
       title_slug = title.parameterize
