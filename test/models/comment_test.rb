@@ -1,8 +1,10 @@
 # frozen_string_literal: true
 
 require "test_helper"
+# require "support/parallelization_enabler"
 
 class CommentTest < ActiveSupport::TestCase
+  # include ParallelizationEnabler
   def setup
     @comment = build(:comment)
   end
