@@ -1,0 +1,18 @@
+default: &default
+  adapter: postgresql
+  host: 127.0.0.1
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+development:
+  <<: *default
+  database: granite_development
+
+test:
+  <<: *default
+  user: postgres
+  database: granite_test<%= ENV['CIRCLE_NODE_INDEX'] %>
+
+production:
+  <<: *default
+  database: granite_production

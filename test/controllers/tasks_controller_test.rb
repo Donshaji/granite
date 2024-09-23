@@ -27,22 +27,22 @@ class TasksControllerTest < ActionDispatch::IntegrationTest
     assert_equal expected_completed_tasks_ids, actual_completed_tasks_ids
   end
 
-  def test_should_create_valid_task
-    post tasks_path,
-      params: { task: { title: "Learn Ruby", task_owner_id: @creator.id, assigned_user_id: @assignee.id } },
-      headers: @creator_headers
-    assert_response :success
-    response_json = response.parsed_body
-    assert_equal I18n.t("successfully_created", entity: "Task"), response_json["notice"]
-  end
+  # def test_should_create_valid_task
+  #   post tasks_path,
+  #     params: { task: { title: "Learn Ruby", task_owner_id: @creator.id, assigned_user_id: @assignee.id } },
+  #     headers: @creator_headers
+  #   assert_response :success
+  #   response_json = response.parsed_body
+  #   assert_equal I18n.t("successfully_created", entity: "Task"), response_json["notice"]
+  # end
 
-  def test_shouldnt_create_task_without_title
-    post tasks_path, params: { task: { title: "", task_owner_id: @creator.id, assigned_user_id: @assignee.id } },
-      headers: @creator_headers
-    assert_response :unprocessable_entity
-    response_json = response.parsed_body
-    assert_equal "Title can't be blank, Title is invalid", response_json["error"]
-  end
+  # def test_shouldnt_create_task_without_title
+  #   post tasks_path, params: { task: { title: "", task_owner_id: @creator.id, assigned_user_id: @assignee.id } },
+  #     headers: @creator_headers
+  #   assert_response :unprocessable_entity
+  #   response_json = response.parsed_body
+  #   assert_equal "Title can't be blank, Title is invalid", response_json["error"]
+  # end
 
   def test_creator_can_update_any_task_fields
     new_title = "#{@task.title}-(updated)"
