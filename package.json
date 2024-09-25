@@ -25,6 +25,7 @@
   "name": "app",
   "private": true,
   "dependencies": {
+    "babel-plugin-transform-react-remove-prop-types": "^0.4.0",
     "@babel/core": "7",
     "@babel/plugin-transform-runtime": "7",
     "@babel/preset-env": "7",
