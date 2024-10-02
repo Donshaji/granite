@@ -86,4 +86,5 @@ gem "bcrypt", "~> 3.1.13"
 gem "pundit"
 gem "react-rails", "~> 2.7.1"
 gem "shakapacker", "~> 6.6.0"
+gem "sidekiq", "<7"
 gem "simplecov", require: false, group: :test

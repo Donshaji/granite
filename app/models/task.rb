@@ -12,24 +12,29 @@ class Task < ApplicationRecord
   belongs_to :assigned_user, foreign_key: "assigned_user_id", class_name: "User"
   belongs_to :task_owner, foreign_key: "task_owner_id", class_name: "User"
 
+  validates :slug, uniqueness: true
+  validate :slug_not_changed
   validates :title,
     presence: true,
     length: { maximum: MAX_TITLE_LENGTH },
     format: { with: VALID_TITLE_REGEX }
-  validates :slug, uniqueness: true
-  validate :slug_not_changed
 
+  after_create :log_task_details
   before_create :set_slug
 
-  private
-
-    def self.of_status(progress)
-      if progress == :pending
-        pending.in_order_of(:status, %w(starred unstarred)).order("updated_at DESC")
-      else
-        completed.in_order_of(:status, %w(starred unstarred)).order("updated_at DESC")
-      end
+  def self.of_status(progress)
+    if progress == :pending
+      pending.in_order_of(:status, %w(starred unstarred)).order("updated_at DESC")
+    else
+      completed.in_order_of(:status, %w(starred unstarred)).order("updated_at DESC")
     end
+  end
+
+  def log_task_details
+    TaskLoggerJob.perform_async(self.id)
+  end
+
+  private
 
     def set_slug
       title_slug = title.parameterize
