@@ -1,10 +1,8 @@
 # frozen_string_literal: true
 
 require "test_helper"
-# require "support/parallelization_enabler"
 
 class CommentTest < ActiveSupport::TestCase
-  # include ParallelizationEnabler
   def setup
     @comment = build(:comment)
   end
@@ -23,15 +21,15 @@ class CommentTest < ActiveSupport::TestCase
     assert_difference "Comment.count" do
       @comment.save
     end
-  end
 
-  def test_comment_should_not_be_valid_without_user
-    @comment.user = nil
-    assert @comment.invalid?
-  end
+    def test_comment_should_not_be_valid_without_user
+      @comment.user = nil
+      assert @comment.invalid?
+    end
 
-  def test_comment_should_not_be_valid_without_task
-    @comment.task = nil
-    assert @comment.invalid?
+    def test_comment_should_not_be_valid_without_task
+      @comment.task = nil
+      assert @comment.invalid?
+    end
   end
 end

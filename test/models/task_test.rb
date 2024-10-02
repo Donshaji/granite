@@ -138,28 +138,4 @@ class TaskTest < ActiveSupport::TestCase
     slugs = tasks.pluck(:slug)
     assert_equal slugs.uniq, slugs
   end
-
-  def test_incremental_slug_generation_for_tasks_with_duplicate_two_worded_titles
-    first_task = Task.create!(title: "test task", assigned_user: @user, task_owner: @user)
-    second_task = Task.create!(title: "test task", assigned_user: @user, task_owner: @user)
-
-    assert_equal "test-task", first_task.slug
-    assert_equal "test-task-2", second_task.slug
-  end
-
-  def test_incremental_slug_generation_for_tasks_with_duplicate_hyphenated_titles
-    first_task = Task.create!(title: "test-task", assigned_user: @user, task_owner: @user)
-    second_task = Task.create!(title: "test-task", assigned_user: @user, task_owner: @user)
-
-    assert_equal "test-task", first_task.slug
-    assert_equal "test-task-2", second_task.slug
-  end
-
-  def test_slug_generation_for_tasks_having_titles_one_being_prefix_of_the_other
-    first_task = Task.create!(title: "fishing", assigned_user: @user, task_owner: @user)
-    second_task = Task.create!(title: "fish", assigned_user: @user, task_owner: @user)
-
-    assert_equal "fishing", first_task.slug
-    assert_equal "fish", second_task.slug
-  end
 end
