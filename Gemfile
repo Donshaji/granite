@@ -88,3 +88,11 @@ gem "react-rails", "~> 2.7.1"
 gem "shakapacker", "~> 6.6.0"
 gem "sidekiq", "<7"
 gem "simplecov", require: false, group: :test
+
+# For periodic sidekiq jobs
+gem "sidekiq-cron"
+
+# For opening mails in development env
+gem "letter_opener", group: :development
+
+gem "i18n"
