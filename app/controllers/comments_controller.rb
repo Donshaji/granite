@@ -9,6 +9,11 @@ class CommentsController < ApplicationController
     render_json
   end
 
+  def show
+    authorize @task
+    @comments = @task.comments.order("created_at DESC")
+  end
+
   private
 
     def load_task!
