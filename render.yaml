@@ -1,6 +1,6 @@
 databases:
-  - name: mysite
-    databaseName: mysite
+  - name: granite
+    databaseName: graniteDB
     user: mysite
     plan: free
 
