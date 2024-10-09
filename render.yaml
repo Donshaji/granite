@@ -9,7 +9,7 @@ services:
     name: granite
     runtime: ruby
     plan: free
-    buildCommand: "bundle exec rails assets:precompile"
+    buildCommand: "./bin/render-build.sh"
     # preDeployCommand: "bundle exec rails db:migrate" # preDeployCommand only available on paid instance types
     startCommand: "bundle exec rails server"
     envVars:
