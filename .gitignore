@@ -34,9 +34,6 @@ test/fixtures
 /config/master.key
 
 # Ignore environment variables
-/.env
-/.env.development.local
-
 #---------------------------------------#
 # IDEs & Editors Ignores                #
 #---------------------------------------#

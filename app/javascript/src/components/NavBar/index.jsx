@@ -73,6 +73,12 @@ const NavBar = () => {
             >
               Add new task
             </Link>
+            <Link
+              className="block px-3 py-1.5 text-sm text-gray-800 hover:bg-gray-100"
+              to="/tasks/report"
+            >
+              Download Report
+            </Link>
             <div className="relative" ref={menuRef}>
               <Link
                 className="flex items-center gap-x-1 rounded-md bg-gray-200 px-4 py-2 text-sm font-medium text-gray-800 hover:bg-gray-300 focus:shadow"
