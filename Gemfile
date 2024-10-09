@@ -11,7 +11,7 @@ gem "rails", "~> 7.0.5"
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"
 
-# Use sqlite3 as the database for Active Record
+# Use pg as the database for Active Record
 
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", "~> 5.0"
@@ -95,9 +95,7 @@ gem "letter_opener", group: :development
 
 gem "i18n"
 
-gem "sqlite3", "~> 1.4", group: [:development, :test]
-
-gem "pg", group: [:production]
+gem "pg", "~> 1.1"
 
 # PDF generation gem
 gem "wicked_pdf"
